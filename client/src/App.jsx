@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import BackendDataComponent from "./components/fetch";
+import { Container, Stack } from "react-bootstrap";
+import BackendDataComponent from "./components/BackendDataComponent";
 
 function App() {
   return (
-    <div>
-      <h1> Users List</h1>
-      <BackendDataComponent />
-    </div>
+    <Container>
+      <Stack direction="horizontal" gap={2} className="mb-4">
+        <h1 className="me-auto"> Budgets</h1>
+        <BackendDataComponent />
+      </Stack>
+    </Container>
   );
 }
 
