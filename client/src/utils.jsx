@@ -4,4 +4,10 @@ const currencyFormatter = new Intl.NumberFormat(undefined, {
   minimumFractionDigits: 0,
 });
 
-export { currencyFormatter };
+const getProgressBarVariant = (amount, max) => {
+  const ratio = amount / max;
+  if (ratio <= 0.49) return "primary";
+  if (ratio >= 0.75) return "danger";
+  return "warning";
+};
+export { currencyFormatter, getProgressBarVariant };
