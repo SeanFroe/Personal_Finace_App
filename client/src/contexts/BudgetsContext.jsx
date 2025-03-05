@@ -4,7 +4,7 @@ import useLocalStorage from "../hooks/useLocalStorage";
 
 const BudgetsContext = React.createContext();
 
-const useBugets = () => {
+const useBudgets = () => {
   return useContext(BudgetsContext);
 };
 
@@ -30,24 +30,17 @@ const BudgetProvider = ({ children }) => {
     return expenses.filter((expense) => expense.budgetId === budgetId);
   };
   const addExpense = ({ description, amount, budgetId }) => {
-    setExpenses(
-      ...(prevExpenses) => {
-        return [
-          ...prevBudgets,
-          { id: uuidv4(), description, amount, budgetId },
-        ];
-      }
-    );
+    setExpenses((prevExpenses) => {
+      return [...prevExpenses, { id: uuidv4(), description, amount, budgetId }];
+    });
   };
   const addBudget = (name, max) => {
-    setBudgets(
-      ...(prevBudgets) => {
-        if (prevBudgets.find((budget) => budget.name === name)) {
-          return prevBudgets;
-        }
-        return [...prevBudgets, { id: uuidv4(), name, max }];
+    setBudgets((prevBudgets) => {
+      if (prevBudgets.find((budget) => budget.name === name)) {
+        return prevBudgets;
       }
-    );
+      return [...prevBudgets, { id: uuidv4(), name, max }];
+    });
   };
   const deleteBudget = ({ id }) => {
     //TODO Deal with expenses
@@ -78,4 +71,4 @@ const BudgetProvider = ({ children }) => {
   );
 };
 
-export { useBugets, BudgetProvider };
+export { useBudgets, BudgetProvider };
