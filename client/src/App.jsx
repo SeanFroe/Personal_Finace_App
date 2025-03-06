@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Stack, Button } from "react-bootstrap";
 import BackendDataComponent from "./components/BackendDataComponent";
 import BudgetCard from "./components/BudgetCard";
+import UncategorizedBudgetCard from "./components/UncategorizedBudgetCard";
 import { AddBudgetModel } from "./components/AddBudgetModel";
 import { AddExpenseModel } from "./components/AddExpenseModal";
 import { useBudgets } from "./contexts/BudgetsContext";
@@ -10,13 +11,12 @@ function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false);
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
-
+  const { budgets, getBudgetExpenses } = useBudgets();
   const openAddExpenseModal = (budgetId) => {
     setShowAddExpenseModal(true);
     setAddExpenseModalBudgetId(budgetId);
   };
 
-  const { budgets, getBudgetExpenses } = useBudgets();
   return (
     <>
       <Container className="my-4">
@@ -52,6 +52,7 @@ function App() {
               ></BudgetCard>
             );
           })}
+          <UncategorizedBudgetCard />
         </div>
       </Container>
       <AddBudgetModel
