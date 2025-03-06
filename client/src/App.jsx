@@ -3,6 +3,7 @@ import { Container, Stack, Button } from "react-bootstrap";
 import BackendDataComponent from "./components/BackendDataComponent";
 import BudgetCard from "./components/BudgetCard";
 import { AddBudgetModel } from "./components/AddBudgetModel";
+import { AddExpenseModel } from "./components/AddExpenseModal";
 import { useBudgets } from "./contexts/BudgetsContext";
 
 function App() {
@@ -47,6 +48,12 @@ function App() {
         handleClose={() => {
           setShowAddBudgetModal(false);
         }}
+      />
+      <AddExpenseModel
+        show={true}
+        // handleClose={() => {
+        //   setShowAddBudgetModal(false);
+        // }}
       />
     </>
   );
