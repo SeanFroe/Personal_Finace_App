@@ -8,7 +8,8 @@ const BudgetCard = ({
   max,
   gray,
   hideButtons,
-  onAddExpenseClick,
+  onAddExpensesClick,
+  onViewExpensesClick,
 }) => {
   const classNames = [];
   if (amount > max) {
@@ -45,11 +46,13 @@ const BudgetCard = ({
             <Button
               variant="outline-primary"
               className="ms-auto"
-              onClick={onAddExpenseClick}
+              onClick={onAddExpensesClick}
             >
               Add Expenses
             </Button>
-            <Button variant="outline-secondary">View Expenses</Button>
+            <Button onClick={onViewExpensesClick} variant="outline-secondary">
+              View Expenses
+            </Button>
           </Stack>
         )}
       </Card.Body>
